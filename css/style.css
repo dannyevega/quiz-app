@@ -4,12 +4,14 @@ body {
 	padding: 0px;
 }
 
+.overlay,
 .game-area,
 .introduction {
 	max-width: 38em;
 	margin: 2em auto 0;
 }
 
+.overlay h1,
 .game-area h1,
 .introduction h1 {
 font-family: 'Open Sans Condensed', sans-serif;
@@ -27,6 +29,7 @@ text-align: center;
 	text-align: center;
 }
 
+#next,
 #answer-submit,
 .introduction #start {
 	width: 200px;
@@ -40,6 +43,8 @@ text-align: center;
   margin-left: 206px;
 }
 
+#next:hover,
+#answer-submit:hover,
 .game-area #option-1:hover,
 .game-area #option-2:hover,
 .game-area #option-3:hover,
@@ -126,4 +131,34 @@ text-align: center;
 /* NEED TO GET RID OF BLUE FOCUS/OUTLINE WHEN YOU CLICK ON BUTTON */
 button {
 	outline: none;
+}
+
+.overlay {
+	z-index: 1000;
+	display: none;
+	border-radius: 3px;
+	margin-top: -18px;	
+}
+
+.overlay h1 {
+	font-size: 4em;
+	color: green;
+	border-bottom: 1px solid #626f77;
+}
+
+.overlay p {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 1.5em;
+	color: #626f77;
+	padding-left: 22px;
+	padding-right: 22px;
+}
+
+.overlay img {
+	float: left;
+	margin-right: 10px;
+}
+
+#next {
+	margin-bottom: 22px;
 }
