@@ -1,0 +1,129 @@
+body {
+	background-color: #ede6e6;
+	margin: 0px;
+	padding: 0px;
+}
+
+.game-area,
+.introduction {
+	max-width: 38em;
+	margin: 2em auto 0;
+}
+
+.game-area h1,
+.introduction h1 {
+font-family: 'Open Sans Condensed', sans-serif;
+letter-spacing: 8px;
+font-size: 8em;
+color: #da1010;
+text-align: center;
+}
+
+.introduction p {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 2em;
+	color: #da1010;
+	margin-top: -80px;
+	text-align: center;
+}
+
+#answer-submit,
+.introduction #start {
+	width: 200px;
+	height: 40px;
+  background: transparent;
+  border: 3px solid white;
+  border-radius: 5px;
+  color: #da1010;
+  font-size: 20px;
+  box-shadow: 0px 0px 10px 0px black;
+  margin-left: 206px;
+}
+
+.game-area #option-1:hover,
+.game-area #option-2:hover,
+.game-area #option-3:hover,
+.game-area #option-4:hover,
+.introduction #start:hover {
+	background-color: #bfb1b1;
+}
+
+.game-area {
+	position: relative;
+}
+
+.button	{
+	position: relative;
+	width: 200px;
+	height: 40px;
+  background: transparent;
+  border: 3px solid white;
+  border-radius: 5px;
+  color: #da1010;
+  font-size: 20px;
+  box-shadow: 0px 0px 10px 0px black;	
+}
+
+.game-area h1 {
+	font-size: 6em;
+	border-bottom: 1px solid #626f77;
+	margin-top: -32px;
+}
+
+.game-area h2 {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 2em;
+	margin-top: -36px;
+	text-align: center;	
+	color: #626f77;
+}
+
+.game-area h3 {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 2em;
+	margin-top: 42px;
+	text-align: center;	
+	color: #626f77;
+}
+
+#user-choice,
+.game-area p {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 2em;
+	color: #da1010;
+	text-align: center;
+}
+
+#user-choice {
+	margin-top: -18px;
+}
+
+.game-area #option-1 {
+  width: 300px;
+  margin-right: 2px;
+  margin-bottom: 8px;	
+}
+
+.game-area #option-2 {
+  width: 300px;
+  margin-left: 2px;  
+}
+
+.game-area #option-3 {
+  width: 300px;
+  margin-right: 2px;
+}
+
+.game-area #option-4 {
+  width: 300px;
+  margin-left: 2px;  
+}
+
+#answer-submit {
+	margin-top: 30px;
+}
+
+/* NEED TO GET RID OF BLUE FOCUS/OUTLINE WHEN YOU CLICK ON BUTTON */
+button {
+	outline: none;
+}
