@@ -1,3 +1,4 @@
+// set global variables that will be used in functions 
 var userSelection;
 var correct;
 var incorrect;
@@ -6,7 +7,13 @@ var answered = 0;
 var $gameArea = $('.game-area');
 var $overlay = $('.overlay');
 var $quizResults = $('.quiz-results');
+var $reStartButton = $('#start-over');
+var $startButton = $('#start');
+var $optionButton = $('.button'); 
+var $userSubmit = $('.user-submit');
+var $nextButton = $('#next');
 
+// JS objects 
 var questions = [{
 	question: "What Nike sneaker was specifically created for use in Back to the Future Part II?",
 	qNum: 1,
@@ -48,26 +55,28 @@ var questions = [{
 	desc: "The Vans dream was born in Anaheim, California on March 16, 1966. Paul Van Doren and three business partners opened up their first shop on 704 E. Broadway where customers had the unique experience of purchasing shoes that were made that day and ready for pick-up in the afternoon. The first shoe offered was the Vans #44 deck shoes, now known as the Authentic. Vans has created a huge and lasting presence in all cultures and sub-cultures from skateboarding, surf, bmx, music, and everyday casual wear. Other popular models were later introduced such as the Old Skool, Slip-On, and Era."		
 }]
 
-
-
-// hides the game area which displays the questions and the overlay which displays the feedback to the user
-// once the user clicks on the 'Start' button, the game area will be displayed
+// hides questions, overlay, and quiz results area
 $gameArea.hide();
 $overlay.hide();
 $quizResults.hide();
-$('#start').click(startGame);
+// starts a new game when user clicks on 'START' button
+$startButton.click(startGame);
 
+// initialize function. sets global variables to 0 to keep track of right/wrong answers and fires first question
 function startGame(){
+	var $intro = $('.introduction');
 	correct = 0;
 	incorrect = 0;
-	$('.introduction').fadeOut();
+	$intro.fadeOut();
 	$gameArea.fadeIn(3000);
 	displayQuestion();
 }
 
-// gets the users selection as what they think is the correct answer and displays their selection in a div
-$('.button').click(getUserSelection);
+// displays users selection when user clicks on an option
+$optionButton.click(getUserSelection);
 
+// grabs the value of the button selected and sets it to global variable userSelection
+// calls function setUserChoice() and passes userSelection to set that text of the div
 function getUserSelection(){
 	userSelection = $(this).text();		
 	setUserChoice(userSelection);
@@ -83,7 +92,7 @@ var setUserChoice = (function(){
 })();
 
 // hides the game area and displays the overlay showing the user if they got the answer correct or incorrect
-$('.user-submit').submit(instead(submitSelection));
+$userSubmit.submit(instead(submitSelection));
 
 function submitSelection(){
 	$gameArea.hide();
@@ -91,6 +100,7 @@ function submitSelection(){
 	checkUserSelection(userSelection);
 }
 
+// calls preventDefault to whatever you pass this function to
 function instead(fn){
 	return function(e){
 		e.preventDefault();
@@ -98,21 +108,9 @@ function instead(fn){
 	};
 }
 
-$('#next').click(displayNextQuestion);
-
-function displayNextQuestion(){
-	page++;
-	answered++;
-
-	$overlay.hide();
-	$gameArea.fadeIn(3000);
-	setUserChoice("");
-	showUserTotalScore();
-	displayQuestion();
-	console.log("page: " + page);
-	console.log("answered: " + answered);
-}
-
+// takes an argument and checks whether that input is the correct answer
+// sets the feedback section to correct or incorrect
+// increments the correct and incorrect values
 var checkUserSelection = (function(){
 	var $currentQuestionFeedback = $('#current-question-feedback');
 
@@ -130,6 +128,32 @@ var checkUserSelection = (function(){
 
 })();
 
+// calls displayNextQuestion function when user clicks on 'NEXT' button
+$nextButton.click(displayNextQuestion);
+
+// increments page and answered variables 
+// hides the overlay and shows next question in queue
+// clears user choice div in next question
+// shows user total score when they reach the end 
+function displayNextQuestion(){
+	page++;
+	answered++;
+	$overlay.hide();
+	$gameArea.fadeIn(3000);
+	setUserChoice("");
+	showUserTotalScore();
+	displayQuestion();
+}
+
+// starts quiz over again when user clicks on 'START OVER' button
+$reStartButton.click(startOver);
+
+// reloads page 
+function startOver(){
+	window.location.reload();	
+}
+
+// grabs all elements and sets them dynamically 
 var displayQuestion = (function(){	
 	var $current = $('#current-question');
 	var $description = $('#description');
@@ -137,7 +161,9 @@ var displayQuestion = (function(){
 	var $shoeImage = $("#shoe-image");
 
 	return function(){
+		//sets current question to each index in questions array. if question does not exist, sets equal to empty string
 		var currentQuestion = questions[page] || "";
+		// sets choices to each question objects options. if questions does not exist, sets equal to empty string
 		var choices = currentQuestion.choices || "";
 		for(var i = 0; i < choices.length; i++){
 			$('#option-' + (i + 1)).text(choices[i]);	
@@ -150,6 +176,7 @@ var displayQuestion = (function(){
 
 })();
 
+// checks how many questions user has answered. if theyve reached the end, displays the total questions answered correctly
 var showUserTotalScore = (function(){
 	var $totalCorrect = $('#total-correct');
 
@@ -163,30 +190,3 @@ var showUserTotalScore = (function(){
 	}
 
 })();
-
-
-// NEED TO DO:
-// IMPLEMENT CORRECT ANSWER COUNTER TO DISPLAY HOW MANY QUESTIONS USER GOT RIGHT
-// var showUserScore = (function(){
-// 	var $currentQuestionFeedback = $('#current-question-feedback');
-
-// 	return function(){
-// 		if(questions[page].qNum === 5){
-// 			$currentQuestionFeedback.text("You got " + correct + " out of 5");
-// 		}
-// 	}
-
-// })();
-
-// ONCE THE LAST QUESTION IS REACHED, DISPLAY TOTAL CORRECT
-// IMPLEMENT 'PLAY AGAIN' BUTTON THAT RESTARTS THE APP
-
-
-// QUESTIONS FOR DANIEL
-// WHY DOES TEXT SHIFT A LITTLE TO LEFT WHEN I CLICK START
-
-
-
-
-
-

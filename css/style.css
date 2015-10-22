@@ -59,6 +59,7 @@ text-align: center;
 
 .game-area {
 	position: relative;
+	display: none;
 }
 
 .button	{
@@ -105,6 +106,7 @@ text-align: center;
 
 #user-choice {
 	margin-top: -18px;
+	height: 70px;
 }
 
 .game-area #option-1 {
@@ -128,9 +130,9 @@ text-align: center;
   margin-left: 2px;  
 }
 
-#answer-submit {
+/*#answer-submit {
 	margin-top: 30px;
-}
+}*/
 
 /* NEED TO GET RID OF BLUE FOCUS/OUTLINE WHEN YOU CLICK ON BUTTON */
 button {
