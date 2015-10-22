@@ -2,6 +2,10 @@ var userSelection;
 var correct;
 var incorrect;
 var page = 0;
+var answered = 0;
+var $gameArea = $('.game-area');
+var $overlay = $('.overlay');
+var $quizResults = $('.quiz-results');
 
 var questions = [{
 	question: "What Nike sneaker was specifically created for use in Back to the Future Part II?",
@@ -48,15 +52,16 @@ var questions = [{
 
 // hides the game area which displays the questions and the overlay which displays the feedback to the user
 // once the user clicks on the 'Start' button, the game area will be displayed
-$('.game-area').hide();
-$('.overlay').hide();
+$gameArea.hide();
+$overlay.hide();
+$quizResults.hide();
 $('#start').click(startGame);
 
 function startGame(){
 	correct = 0;
 	incorrect = 0;
 	$('.introduction').fadeOut();
-	$('.game-area').fadeIn(3000);
+	$gameArea.fadeIn(3000);
 	displayQuestion();
 }
 
@@ -81,8 +86,8 @@ var setUserChoice = (function(){
 $('.user-submit').submit(instead(submitSelection));
 
 function submitSelection(){
-	$('.game-area').hide();
-	$('.overlay').fadeIn(1500);
+	$gameArea.hide();
+	$overlay.fadeIn(1500);
 	checkUserSelection(userSelection);
 }
 
@@ -97,10 +102,14 @@ $('#next').click(displayNextQuestion);
 
 function displayNextQuestion(){
 	page++;
-	$('.overlay').hide();
-	$('.game-area').fadeIn(3000);
+	answered++;
+	$overlay.hide();
+	$gameArea.fadeIn(3000);
 	setUserChoice("");
+	showUserTotalScore();
 	displayQuestion();
+	console.log("page: " + page);
+	console.log("answered: " + answered);
 }
 
 var checkUserSelection = (function(){
@@ -139,6 +148,21 @@ var displayQuestion = (function(){
 	}
 
 })();
+
+var showUserTotalScore = (function(){
+	var $totalCorrect = $('#total-correct');
+
+	return function(){
+		if(answered === 5){		
+			$gameArea.hide();
+			$overlay.hide();
+			$totalCorrect.text(correct);		
+			$quizResults.show();
+		}			
+	}
+
+})();
+
 
 // NEED TO DO:
 // IMPLEMENT CORRECT ANSWER COUNTER TO DISPLAY HOW MANY QUESTIONS USER GOT RIGHT

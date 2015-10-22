@@ -4,6 +4,7 @@ body {
 	padding: 0px;
 }
 
+.quiz-results,
 .overlay,
 .game-area,
 .introduction {
@@ -11,6 +12,7 @@ body {
 	margin: 2em auto 0;
 }
 
+.quiz-results h1,
 .overlay h1,
 .game-area h1,
 .introduction h1 {
@@ -29,6 +31,7 @@ text-align: center;
 	text-align: center;
 }
 
+#start-over,
 #next,
 #answer-submit,
 .introduction #start {
@@ -43,6 +46,7 @@ text-align: center;
   margin-left: 206px;
 }
 
+#start-over:hover,
 #next:hover,
 #answer-submit:hover,
 .game-area #option-1:hover,
@@ -133,6 +137,7 @@ button {
 	outline: none;
 }
 
+.quiz-results,
 .overlay {
 	z-index: 1000;
 	display: none;
@@ -140,6 +145,7 @@ button {
 	margin-top: -18px;	
 }
 
+.quiz-results h1,
 .overlay h1 {
 	font-size: 4em;
 	color: green;
@@ -162,3 +168,27 @@ button {
 #next {
 	margin-bottom: 22px;
 }
+
+.quiz-results h1 {
+	color: green;
+	margin-top: 176px;
+}
+
+.quiz-results p {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 2em;
+	color: #626f77;
+	text-align: center;
+	margin-top: 68px;
+}
+
+#total-correct {
+	color: green;
+	font-weight: bolder;
+	margin-top: 12px;
+}
+
+
+
+
+
