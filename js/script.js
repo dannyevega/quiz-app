@@ -103,6 +103,7 @@ $('#next').click(displayNextQuestion);
 function displayNextQuestion(){
 	page++;
 	answered++;
+
 	$overlay.hide();
 	$gameArea.fadeIn(3000);
 	setUserChoice("");
@@ -136,8 +137,8 @@ var displayQuestion = (function(){
 	var $shoeImage = $("#shoe-image");
 
 	return function(){
-		var currentQuestion = questions[page];
-		var choices = currentQuestion.choices;
+		var currentQuestion = questions[page] || "";
+		var choices = currentQuestion.choices || "";
 		for(var i = 0; i < choices.length; i++){
 			$('#option-' + (i + 1)).text(choices[i]);	
 		}			
