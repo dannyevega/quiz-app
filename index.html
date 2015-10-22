@@ -16,15 +16,15 @@
 
 	<section class="game-area">
 		<h1>KICKS 101 <img src="images/sneaker-emoji.png" alt="sneaker emoji" width="90" height="88.75"></h1>
-		<h2>Question 1 of 5</h2>
-		<p>What was the first Vans model ever created?</p>
-			<button id="option-1" class="button">Old Skool</button>
-			<button id="option-2" class="button">Slip-On</button>
-			<button id="option-3" class="button">Era</button>
-			<button id="option-4" class="button">Authentic</button>
+		<h2>Question <span id="current-question-number"></span> of 5</h2>
+		<p id="current-question"></p>
+			<button id="option-1" class="button"></button>
+			<button id="option-2" class="button"></button>
+			<button id="option-3" class="button"></button>
+			<button id="option-4" class="button"></button>
 		<h3>Your choice is:</h3>
 
-		<div id="user-choice">Authentic</div>
+		<div id="user-choice"></div>
 
 		<form class="user-submit">
 			<button id="answer-submit">SUBMIT</button>				
@@ -32,10 +32,11 @@
 	</section>
 
 	<section class="overlay">
-		<h1>CORRECT!</h1>
-		<img src="images/authentic.png" alt="red october" width="155" height="110">
-		<p>TThe Vans dream was born in Anaheim, California on March 16, 1966. Paul Van Doren and three business partners opened up their first shop on 704 E. Broadway where customers had the unique experience of purchasing shoes that were made that day and ready for pick-up in the afternoon. The first shoe offered was the Vans #44 deck shoes, now known as the Authentic. Vans has created a huge and lasting presence in all cultures and sub-cultures from skateboarding, surf, bmx, music, and everyday casual wear. Other popular models were later introduced such as the Old Skool, Slip-On, and Era.</p>
-		<button id="next">NEXT</button>
+		<h1 id="current-question-feedback"></h1>
+			<img id="shoe-image" src="" width="155" height="110">
+		<p id="description"></p>
+
+		<button id="next">NEXT</button>		
 	</section>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
