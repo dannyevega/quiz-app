@@ -12,6 +12,7 @@ var $startButton = $('#start');
 var $optionButton = $('.button'); 
 var $userSubmit = $('.user-submit');
 var $nextButton = $('#next');
+var $userRating = $('#user-rating');
 
 // JS objects 
 var questions = [{
@@ -186,7 +187,29 @@ var showUserTotalScore = (function(){
 			$overlay.hide();
 			$totalCorrect.text(correct);		
 			$quizResults.show();
+			giveUserRating();
 		}			
 	}
 
 })();
+
+// gives user a SNKR rating depending on how many questions they answered correct
+var giveUserRating = (function(){
+
+	return function(){
+		if(correct >= 4){
+				$userRating.text("SNKRHEAD");
+			} else if(correct === 3) {
+				$userRating.text("AVERAGE");
+			} else {
+				$userRating.text("NEWBIE");
+			}	
+		}	
+
+})();
+
+
+
+
+
+
