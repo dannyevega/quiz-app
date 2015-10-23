@@ -211,6 +211,16 @@ button {
 	margin-top: 12px;
 }
 
+#display-correct {
+	text-align: center;
+	margin-top: -18px;
+	color: green;
+}
+
+#correct-answer {
+	color: #626f77;
+}
+
 
 
 

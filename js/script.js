@@ -12,7 +12,6 @@ var $startButton = $('#start');
 var $optionButton = $('.button'); 
 var $userSubmit = $('.user-submit');
 var $nextButton = $('#next');
-var $userRating = $('#user-rating');
 
 // JS objects 
 var questions = [{
@@ -111,16 +110,22 @@ function instead(fn){
 
 // takes an argument and checks whether that input is the correct answer
 // sets the feedback section to correct or incorrect
+// shows user correct answer if they answered incorrectly
 // increments the correct and incorrect values
 var checkUserSelection = (function(){
 	var $currentQuestionFeedback = $('#current-question-feedback');
+	var $correctAnswer = $('#correct-answer');
+	var $displayCorrect = $('#display-correct');
 
 	return function(userInput){
 		if (userInput === questions[page].answer) {
+			$displayCorrect.hide();
 			$currentQuestionFeedback.text("Correct!");
 			$currentQuestionFeedback.css("color", "green");
 			correct++;
 		} else {
+			$displayCorrect.show();
+			$correctAnswer.text(questions[page].answer);
 			$currentQuestionFeedback.text("Incorrect");
 			$currentQuestionFeedback.css("color", "red");
 			incorrect++			
@@ -159,7 +164,7 @@ var displayQuestion = (function(){
 	var $current = $('#current-question');
 	var $description = $('#description');
 	var $currentQNum = $('#current-question-number');
-	var $shoeImage = $("#shoe-image");
+	var $shoeImage = $('#shoe-image');
 
 	return function(){
 		//sets current question to each index in questions array. if question does not exist, sets equal to empty string
@@ -195,6 +200,7 @@ var showUserTotalScore = (function(){
 
 // gives user a SNKR rating depending on how many questions they answered correct
 var giveUserRating = (function(){
+	var $userRating = $('#user-rating');
 
 	return function(){
 		if(correct >= 4){
@@ -207,6 +213,8 @@ var giveUserRating = (function(){
 		}	
 
 })();
+
+
 
 
 
